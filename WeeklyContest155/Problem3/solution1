@@ -1,0 +1,34 @@
+//Author: https://leetcode.com/__chaos__/
+
+    string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
+      int n = s.size();
+      vector<int> fa(n);
+      for (int i = 0; i < n; ++i) {
+        fa[i] = i;
+      }
+      function<int(int)> getfa = [&fa, &getfa] (int x) {
+        if (fa[x] != x) {
+          fa[x] = getfa(fa[x]);
+        }
+        return fa[x];
+      };
+      for (const auto &p : pairs) {
+        fa[getfa(p[0])] = getfa(p[1]);
+      }
+      unordered_map<int, vector<int>> vecs;
+      for (int i = 0; i < n; ++i) {
+        vecs[getfa(i)].push_back(i);
+      }
+      for (const auto &vec : vecs) {
+        string tmp;
+        for (int i : vec.second) {
+          tmp.push_back(s[i]);
+        }
+        sort(tmp.begin(), tmp.end());
+        for (int i = 0; i < vec.second.size(); ++i) {
+          s[vec.second[i]] = tmp[i];
+        }
+      }
+      return s;
+    }
+
