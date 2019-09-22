@@ -10,3 +10,6 @@ Explanation: The ugly numbers are 2, 3, 4, 5, 6, 8, 9, 10... The 3rd is 4.
 
 Input: n = 1000000000, a = 2, b = 217983653, c = 336916467
 Output: 1999999984
+
+
+Source: https://leetcode.com/contest/weekly-contest-155/problems/ugly-number-iii/
