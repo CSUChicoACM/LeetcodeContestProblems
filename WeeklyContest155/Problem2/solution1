@@ -1,0 +1,32 @@
+//Author: https://leetcode.com/wjli/
+
+
+	long long gcd(long long a, long long b)
+	{
+		while (b != 0) {
+			long long t = b;
+			b = a % b;
+			a = t;
+		}
+		return a;
+	}
+
+	int nthUglyNumber(int n, int a, int b, int c) {
+		long long aa = a, bb = b, cc = c, g = gcd(gcd(a, b), c);
+		long long ab = aa * bb / gcd(aa, bb), bc = bb * cc / gcd(bb, cc), ac = aa * cc / gcd(aa, cc);
+		long long abc = ab / gcd(ab, bc);
+		abc *= bc;
+		long long nn = n;
+		
+		long long x, y, z;
+		x = 0; y = 3000000000;
+		while (x < y) {
+			z = (x + y) / 2;
+
+			long long ct = z / aa + z / bb + z / cc - z / ab - z / ac - z / bc + z / abc;
+			if (ct < nn) x = z + 1;
+			else y = z;
+		}
+
+		return x;
+	}
