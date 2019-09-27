@@ -12,4 +12,10 @@ Input: n = 1000000000, a = 2, b = 217983653, c = 336916467
 Output: 1999999984
 
 
+Constraints:
+
+1 <= n, a, b, c <= 10^9
+1 <= a * b * c <= 10^18
+It's guaranteed that the result will be in range [1, 2 * 10^9]
+
 Source: https://leetcode.com/contest/weekly-contest-155/problems/ugly-number-iii/
